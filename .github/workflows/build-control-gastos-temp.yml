@@ -1,4 +1,4 @@
-name: Build ControlGastos temporary APK
+name: Build MiSaldo temporary APK
 
 on:
   push:
@@ -32,10 +32,10 @@ jobs:
         run: gradle --no-daemon assembleDebug
       - name: Commit APK
         run: |
-          cp control-gastos/app/build/outputs/apk/debug/app-debug.apk ControlGastos-v1.apk
-          sha256sum ControlGastos-v1.apk > ControlGastos-v1.sha256.txt
+          cp control-gastos/app/build/outputs/apk/debug/app-debug.apk MiSaldo-v1.1.0.apk
+          sha256sum MiSaldo-v1.1.0.apk > MiSaldo-v1.1.0.sha256.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f ControlGastos-v1.apk ControlGastos-v1.sha256.txt
-          git commit -m "[apk-output] ControlGastos v1"
+          git add -f MiSaldo-v1.1.0.apk MiSaldo-v1.1.0.sha256.txt
+          git commit -m "[apk-output] MiSaldo v1.1.0"
           git push origin HEAD:build/control-gastos-apk-temp
